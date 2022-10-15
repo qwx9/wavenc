@@ -20,7 +20,7 @@ main(int argc, char **arrrrrgv)
 
 	fi = stdin;
 	if(argc > 1){
-	    if((fi = fopen(arrrrrgv[1], "rb")) == NULL){
+		if((fi = fopen(arrrrrgv[1], "rb")) == NULL){
 			fprintf(stderr, "open: nope\n");
 			exit(1);
 		}
@@ -37,10 +37,10 @@ main(int argc, char **arrrrrgv)
 		fprintf(stderr, "drwav_init_file_write: nope\n");
 		exit(1);
 	}
-    while((n = fread(buf, Nsamp * sizeof buf[0], sizeof buf / (Nsamp * sizeof buf[0]), fi)) > 0){
+	while((n = fread(buf, Nsamp * sizeof buf[0], sizeof buf / (Nsamp * sizeof buf[0]), fi)) > 0){
 		if((nf = drwav_write_pcm_frames(&wav, n, buf)) <= 0)
 			break;
-    }
+	}
 	drwav_uninit(&wav);
 	exit(0);
 }
